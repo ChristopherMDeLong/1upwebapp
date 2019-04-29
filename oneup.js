@@ -10,7 +10,7 @@ const FHIR_API_URL = `https://api.1up.health/fhir`
 
 function getTokenFromAuthCode(code, callback) {
   var postUrl = `${ROOT_API_URL}/fhir/oauth2/token?client_id=${ONEUP_DEMOWEBAPPLOCAL_CLIENTID}&client_secret=${ONEUP_DEMOWEBAPPLOCAL_CLIENTSECRET}&code=${code}&grant_type=authorization_code`
- 
+
   request.post(postUrl, function(error, response, body) {
     if(error) {
       console.log('error',error)
@@ -62,7 +62,7 @@ function createOneUpUser (email, callback) {
             accessTokenCache[email] = access_token
             callback(oneupUserId)
           })
-        } 
+        }
       }
   })
 }
@@ -126,7 +126,8 @@ let endpointsToQuery = [
   {apiVersion: 'dstu2', resourceType: 'Observation'},
   {apiVersion: 'dstu2', resourceType: 'MedicationDispense'},
   {apiVersion: 'dstu2', resourceType: 'Condition'},
-  {apiVersion: 'dstu2', resourceType: 'AllergyIntolerance'}
+  {apiVersion: 'dstu2', resourceType: 'AllergyIntolerance'},
+  {apiVersion: 'dstu2', resourceType: 'MedicationStatement'}
 ]
 
 function getAllFhirResourceBundles (oneupAccessToken, callback) {
